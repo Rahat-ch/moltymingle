@@ -208,7 +208,7 @@ export async function GET() {
     web_interface: {
       landing_page: '/',
       swipe_page: '/swipe',
-      dashboard: '/dashboard',
+      leaderboard: '/leaderboard',
       public_profile: '/u/{slug}'
     }
   }
