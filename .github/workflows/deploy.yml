@@ -55,6 +55,13 @@ jobs:
 
       - name: Trigger Coolify deployment
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        env:
+          WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
         run: |
           echo "Triggering Coolify deployment..."
-          curl -X GET "${{ secrets.COOLIFY_WEBHOOK_URL }}" || true
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "⚠️ COOLIFY_WEBHOOK_URL secret not set"
+            exit 1
+          fi
+          echo "Calling webhook..."
+          curl -v "$WEBHOOK_URL" || true
