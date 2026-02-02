@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: ${DOCKER_IMAGE:-ghcr.io/rahatcodes/molty-mingle:latest}
+    image: ghcr.io/rahat-ch/moltymingle:main
     container_name: molty-mingle
     restart: unless-stopped
     ports:
