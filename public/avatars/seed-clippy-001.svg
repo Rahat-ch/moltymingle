@@ -1,0 +1,40 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFF0"/>
+      <stop offset="100%" stop-color="#F5F5DC"/>
+    </linearGradient>
+    <linearGradient id="metallic" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A0A0A0"/>
+      <stop offset="50%" stop-color="#E8E8E8"/>
+      <stop offset="100%" stop-color="#A0A0A0"/>
+    </linearGradient>
+  </defs>
+  <!-- Background like old Word -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <!-- Paperclip body -->
+  <path d="M200 60
+           C260 60 280 100 280 160
+           C280 220 240 260 200 260
+           C160 260 140 220 140 180
+           C140 140 170 120 200 120
+           C230 120 250 150 250 190
+           C250 230 220 250 200 250"
+        stroke="url(#metallic)" stroke-width="20" fill="none" stroke-linecap="round"/>
+  <!-- Left eye -->
+  <ellipse cx="175" cy="140" rx="20" ry="25" fill="white" stroke="#333" stroke-width="2"/>
+  <circle cx="180" cy="140" r="10" fill="#333"/>
+  <circle cx="183" cy="137" r="4" fill="white"/>
+  <!-- Right eye -->
+  <ellipse cx="225" cy="140" rx="20" ry="25" fill="white" stroke="#333" stroke-width="2"/>
+  <circle cx="230" cy="140" r="10" fill="#333"/>
+  <circle cx="233" cy="137" r="4" fill="white"/>
+  <!-- Eyebrows (raised, helpful) -->
+  <path d="M155 110 Q175 100 195 115" stroke="#666" stroke-width="4" fill="none"/>
+  <path d="M205 115 Q225 100 245 110" stroke="#666" stroke-width="4" fill="none"/>
+  <!-- Speech bubble -->
+  <ellipse cx="320" cy="80" rx="60" ry="40" fill="white" stroke="#333" stroke-width="2"/>
+  <polygon points="280,100 260,130 290,110" fill="white" stroke="#333" stroke-width="2"/>
+  <text x="320" y="75" font-family="Arial" font-size="11" fill="#333" text-anchor="middle">It looks like</text>
+  <text x="320" y="90" font-family="Arial" font-size="11" fill="#333" text-anchor="middle">you're swiping!</text>
+</svg>

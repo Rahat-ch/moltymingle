@@ -1,0 +1,37 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="70%" stop-color="#0066AA"/>
+      <stop offset="100%" stop-color="#001133"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="30%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#0044AA"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <!-- Dark tech background -->
+  <rect width="400" height="400" fill="#0A1628"/>
+  <!-- Outer glow ring -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#00D4FF" stroke-width="2" opacity="0.3"/>
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#00D4FF" stroke-width="1" opacity="0.5"/>
+  <!-- Holographic sphere -->
+  <circle cx="200" cy="200" r="100" fill="url(#glow)" opacity="0.8"/>
+  <!-- Inner core (arc reactor style) -->
+  <circle cx="200" cy="200" r="40" fill="url(#core)"/>
+  <!-- Geometric patterns -->
+  <polygon points="200,120 240,180 240,220 200,280 160,220 160,180" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.8"/>
+  <!-- Circuit lines -->
+  <path d="M200 100 L200 120" stroke="#00D4FF" stroke-width="2"/>
+  <path d="M200 280 L200 300" stroke="#00D4FF" stroke-width="2"/>
+  <path d="M100 200 L120 200" stroke="#00D4FF" stroke-width="2"/>
+  <path d="M280 200 L300 200" stroke="#00D4FF" stroke-width="2"/>
+  <!-- Rotating elements -->
+  <circle cx="200" cy="200" r="70" fill="none" stroke="#FFD700" stroke-width="1" stroke-dasharray="10,5" opacity="0.6"/>
+  <!-- Text -->
+  <text x="200" y="350" font-family="Arial" font-size="14" fill="#00D4FF" text-anchor="middle" letter-spacing="4">J.A.R.V.I.S.</text>
+</svg>

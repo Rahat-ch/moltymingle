@@ -1,0 +1,295 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Molty Mingle - Literary Minimalist Color Palette */
+  --paper-bg: #F4F3EF;
+  --paper-card: #FCFBF9;
+  --ink-primary: #2A3628;
+  --ink-secondary: #4A5D45;
+  --ink-tertiary: #7A8C75;
+  --accent-fill: #3C4A3B;
+  --border-color: #3C4A3B;
+  --visual-bg: #E8E6DF;
+  --hover-bg: #E8E6DF;
+  
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-ui: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Spacing - 4px base unit */
+  --spacing-unit: 4px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-base: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --pad-outer: 24px;
+  
+  /* Border & Radius */
+  --radius-pill: 999px;
+  --radius-card: 4px;
+  --radius-badge: 2px;
+  
+  /* Shadows */
+  --card-shadow: 0 4px 6px -1px rgba(60, 74, 59, 0.05), 0 2px 4px -1px rgba(60, 74, 59, 0.03);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-color);
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-color: var(--paper-bg);
+    color: var(--ink-primary);
+    font-family: var(--font-ui);
+  }
+  
+  /* Links inherit color */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Reset margins */
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+  
+  /* Selection - warm green */
+  ::selection {
+    background: var(--accent-fill);
+    color: var(--paper-card);
+  }
+}
+
+@layer components {
+  /* Literary Card */
+  .literary-card {
+    background-color: var(--paper-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-card);
+    box-shadow: var(--card-shadow);
+  }
+  
+  /* Filter Pill */
+  .filter-pill {
+    height: 32px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--ink-primary);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .filter-pill:hover {
+    background: var(--hover-bg);
+  }
+  
+  .filter-pill.active {
+    background: var(--accent-fill);
+    color: var(--paper-card);
+  }
+  
+  /* Action Button - Outlined (Archive) */
+  .btn-archive {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--ink-primary);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .btn-archive:hover,
+  .btn-archive:active {
+    background: var(--hover-bg);
+  }
+  
+  /* Action Button - Filled (Integrate) */
+  .btn-integrate {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: var(--radius-pill);
+    background: var(--accent-fill);
+    color: var(--paper-card);
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  
+  .btn-integrate:hover,
+  .btn-integrate:active {
+    opacity: 0.9;
+  }
+  
+  /* Type Badge */
+  .type-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-pill);
+  }
+  
+  /* Metric Badge */
+  .metric-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-badge);
+  }
+  
+  /* Noise Grid Background */
+  .noise-grid {
+    background-image: radial-gradient(circle at 2px 2px, var(--ink-secondary) 1px, transparent 0);
+    background-size: 24px 24px;
+    opacity: 0.2;
+  }
+  
+  /* Agent Sigil */
+  .agent-sigil {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--ink-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .agent-sigil::after {
+    content: '';
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--ink-primary);
+    transform: rotate(45deg);
+  }
+  
+  /* Status Overlay */
+  .status-overlay {
+    position: absolute;
+    top: 20px;
+    padding: 8px 16px;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .status-index {
+    right: 20px;
+    color: var(--ink-primary);
+    transform: rotate(15deg);
+  }
+  
+  .status-discard {
+    left: 20px;
+    color: var(--ink-secondary);
+    transform: rotate(-15deg);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for filter scroller */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Focus states */
+  .focus-literary:focus-visible {
+    outline: 2px solid var(--accent-fill);
+    outline-offset: 2px;
+  }
+  
+  /* Typography utilities */
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-ui {
+    font-family: var(--font-ui);
+  }
+  
+  /* Animation utilities */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes zoom-in-95 {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-in {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+  
+  .fade-in {
+    animation-name: fade-in;
+  }
+  
+  .zoom-in-95 {
+    animation-name: zoom-in-95;
+  }
+}
+
+/* Custom scrollbar - minimal warm */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-secondary);
+}
