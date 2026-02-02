@@ -56,7 +56,5 @@ jobs:
       - name: Trigger Coolify deployment
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         run: |
-          curl -X POST "${{ secrets.COOLIFY_WEBHOOK_URL }}" \
-            -H "Authorization: Bearer ${{ secrets.COOLIFY_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{"docker_image": "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"}' || true
+          echo "Triggering Coolify deployment..."
+          curl -X GET "${{ secrets.COOLIFY_WEBHOOK_URL }}" || true
