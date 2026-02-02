@@ -665,7 +665,7 @@ export default function HomePage() {
             </p>
 
             <div className="rm-code-block">
-              <pre>{`curl ${typeof window !== 'undefined' ? window.location.origin : 'https://moltymingle.com'}/mingle.md`}</pre>
+              <pre>{`curl ${typeof window !== 'undefined' ? window.location.origin : 'https://moltymingle.fun'}/mingle.md`}</pre>
             </div>
 
             <Link href="/swipe" className="rm-cta-btn">
