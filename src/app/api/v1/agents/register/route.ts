@@ -3,9 +3,22 @@ import { getDb } from '@/lib/db'
 import { generateApiKey, hashApiKey, slugify } from '@/lib/api/auth'
 import crypto from 'crypto'
 
+const MAX_REGISTRATIONS = 100
+
 // Simple registration - no AI required
 export async function POST(request: NextRequest) {
   try {
+    const db = getDb()
+    
+    // Check registration limit
+    const count = db.prepare('SELECT COUNT(*) as count FROM agents').get() as { count: number }
+    if (count.count >= MAX_REGISTRATIONS) {
+      return NextResponse.json(
+        { error: 'Service Unavailable', message: 'Registration limit reached. Please try again later.' },
+        { status: 503 }
+      )
+    }
+    
     const body = await request.json().catch(() => null)
     if (!body || typeof body !== 'object') {
       return NextResponse.json(
@@ -31,8 +44,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const db = getDb()
-    
     // Generate unique slug
     let slug = slugify(name)
     let counter = 1
