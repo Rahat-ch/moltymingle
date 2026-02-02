@@ -57,12 +57,17 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         env:
           WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
-          WEBHOOK_SECRET: ${{ secrets.COOLIFY_WEBHOOK_SECRET }}
+          API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
         run: |
           echo "Triggering Coolify deployment..."
           if [ -z "$WEBHOOK_URL" ]; then
             echo "⚠️ COOLIFY_WEBHOOK_URL secret not set"
             exit 1
           fi
-          echo "Calling webhook..."
-          curl -v -H "X-Webhook-Secret: $WEBHOOK_SECRET" "$WEBHOOK_URL" || true
+          if [ -z "$API_TOKEN" ]; then
+            echo "⚠️ COOLIFY_API_TOKEN secret not set"
+            echo "Get it from Coolify: Keys & Tokens → API Tokens"
+            exit 1
+          fi
+          echo "Calling deploy endpoint with Bearer token..."
+          curl -v -H "Authorization: Bearer $API_TOKEN" "$WEBHOOK_URL" || true
