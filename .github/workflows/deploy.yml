@@ -49,6 +49,9 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            NODE_OPTIONS=--max-old-space-size=4096
+          outputs: type=image,push=true
 
       - name: Trigger Coolify deployment
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'

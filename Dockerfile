@@ -23,7 +23,11 @@ COPY . .
 
 # Build the application
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+ENV NODE_OPTIONS=--max-old-space-size=4096
+RUN npm run build 2>&1 || (echo "Build failed with exit code $?" && exit 1)
+
+# Verify standalone output exists
+RUN ls -la .next/standalone/server.js || (echo "Standalone output missing!" && exit 1)
 
 # Production image, copy all the files and run next
 FROM base AS runner
