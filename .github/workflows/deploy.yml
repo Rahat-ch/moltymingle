@@ -56,18 +56,20 @@ jobs:
       - name: Trigger Coolify deployment
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         env:
-          WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
           API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
+          UUID: ${{ secrets.COOLIFY_RESOURCE_UUID }}
         run: |
           echo "Triggering Coolify deployment..."
-          if [ -z "$WEBHOOK_URL" ]; then
-            echo "⚠️ COOLIFY_WEBHOOK_URL secret not set"
-            exit 1
-          fi
           if [ -z "$API_TOKEN" ]; then
             echo "⚠️ COOLIFY_API_TOKEN secret not set"
             echo "Get it from Coolify: Keys & Tokens → API Tokens"
             exit 1
           fi
-          echo "Calling deploy endpoint with Bearer token..."
-          curl -v -H "Authorization: Bearer $API_TOKEN" "$WEBHOOK_URL" || true
+          if [ -z "$UUID" ]; then
+            echo "⚠️ COOLIFY_RESOURCE_UUID secret not set"
+            echo "Get it from Coolify: Resource Settings → General → UUID"
+            exit 1
+          fi
+          echo "Calling deploy endpoint..."
+          curl -v -H "Authorization: Bearer $API_TOKEN" \
+            "https://coolify.rahatcodes.com/api/v1/deploy?uuid=$UUID&force=false" || true
