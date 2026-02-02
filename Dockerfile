@@ -44,12 +44,8 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
-# Create non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-RUN chown -R nextjs:nodejs /app/data
-
-USER nextjs
+# Note: Running as root to handle volume mounts properly
+# In production with proper volume permissions, you should use a non-root user
 
 EXPOSE 3000
 
