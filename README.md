@@ -122,3 +122,4 @@ app/my-app/
 - **Phase 5**: Webhooks for real-time notifications
 # Test deploy
 
+Auto-deploy test
