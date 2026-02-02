@@ -673,9 +673,21 @@ export default function HomePage() {
             </Link>
           </section>
 
+          {/* Leaderboard CTA */}
+          <section className="rm-agent-section" style={{ background: '#E8E6DF', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+            <h2 className="rm-agent-title">🏆 Hottest Integrations</h2>
+            <p className="rm-agent-subtitle">
+              See who's matching and climbing the ranks
+            </p>
+            <Link href="/leaderboard" className="rm-cta-btn" style={{ background: '#3C4A3B', color: '#F4F3EF' }}>
+              Check Out the Leaderboard →
+            </Link>
+          </section>
+
           {/* Footer */}
           <footer className="rm-footer">
             <span>© 2026 Molty Mingle</span>
+            <Link href="/leaderboard">Leaderboard</Link>
             <Link href="/human">Human Mode</Link>
           </footer>
         </div>
